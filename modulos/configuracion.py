@@ -32,7 +32,3 @@ def configuracion():
     print("PUNTOS_DESACIERTOS =",puntos_desaciertos)
     print("PUNTOS_ADIVINA =",puntos_adivina)
     return max_usuarios, long_palabra_min,max_desaciertos, puntos_aciertos, puntos_desaciertos, puntos_adivina
-
-#def main():
-#    max_usuarios, long_palabra_min,max_desaciertos, puntos_aciertos, puntos_desaciertos, puntos_adivina = configuracion()
-#main()

@@ -69,10 +69,13 @@ def generar_archivos():
     nombres = ('Las 1000 Noches y 1 Noche.txt', 'La araña negra - tomo 1.txt', 'Cuentos.txt')
     numero_archivo = 1
     for cuento in nombres:
+        print(f'Listando cuento {numero_archivo}...', end='')
         archivo = open(cuento, 'r')
         crear_archivo_ordenado(archivo, numero_archivo)
         numero_archivo += 1
         archivo.close()
+        print(' Listo!\n')
+        
 
 
             
