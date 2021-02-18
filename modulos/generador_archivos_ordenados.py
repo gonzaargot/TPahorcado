@@ -5,16 +5,18 @@ def reemplazar_acentos(palabra):
     indice = 0
     palabra = list(palabra)
     for letra in palabra:
-        if letra == 'á':
+        if letra == 'á' or letra == 'à':
             palabra[indice] = 'a'
-        elif letra == 'é':
+        elif letra == 'é' or letra == 'è':
             palabra[indice] = 'e'
-        elif letra == 'í':
+        elif letra == 'í' or letra == 'ì':
             palabra[indice] = 'i'
-        elif letra == 'ó':
+        elif letra == 'ó' or letra == 'ò':
             palabra[indice] = 'o'
-        elif letra == 'ú':
+        elif letra == 'ú' or letra == 'ù':
             palabra[indice] = 'u'
+        elif letra == 'ñ':
+            palabra[indice] = 'n'
         indice +=1
     return ''.join(palabra)
 

@@ -1,11 +1,14 @@
 from modulos import generador_archivos_ordenados as listar_cuentos
-from modulos import configuracion
+from modulos import configuracion, palabras_ordenadas, juego
 
 
 def main():
     if not revisar_archivos():
         listar_cuentos.generar_archivos()
-    max_usuarios, long_palabra_min,max_desaciertos, puntos_aciertos, puntos_desaciertos, puntos_adivina = configuracion.configuracion()
+    palabras_ordenadas.hacer_lista()
+    MAX_USUARIOS, LONG_PALABRA_MIN, MAX_DESACIERTOS, PUNTOS_ACIERTOS, PUNTOS_DESACIERTOS, PUNTOS_ADIVINA = configuracion.configuracion()
+    juego.cantidad_jugadores()
+    
     
 def revisar_archivos():
     cuento = 1
