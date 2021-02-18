@@ -966,6 +966,7 @@ bolsillos
 bolson
 bolsonet
 bombas
+bona
 bonachon
 bonachona
 bondad
@@ -995,6 +996,7 @@ botella
 botes
 boticas
 botones
+bou
 boveda
 brabante
 brabanzones
@@ -1070,8 +1072,6 @@ buscas
 buscase
 busco
 butacas
-bòna
-bòu
 caballerias
 caballero
 caballo
@@ -2359,7 +2359,6 @@ durmiendo
 durmiesen
 duro
 duros
-dòna
 e
 ebrios
 echaban
@@ -2879,11 +2878,11 @@ explosivas
 exponen
 exponiendo
 exponiendote
+expres
 expresando
 expresion
 expresiones
 expresivamente
-exprès
 extasiaba
 extasiaban
 extasis
@@ -4263,7 +4262,7 @@ menut
 mercaderes
 mercado
 mercancias
-mercè
+merce
 merece
 merecedor
 merecemos
@@ -5215,6 +5214,7 @@ porque
 portado
 portal
 portela
+portes
 portezuela
 porvenir
 pos
@@ -5406,7 +5406,6 @@ pusiera
 pusieron
 puso
 pusose
-pòrtes
 que
 queda
 quedaba
@@ -6375,7 +6374,6 @@ suya
 suyas
 suyo
 suyos
-sènto
 ta
 tabacalera
 tabaco
@@ -6579,6 +6577,7 @@ todavia
 todo
 todopoderoso
 todos
+tofol
 toldo
 toleraban
 tolerancia
@@ -6757,7 +6756,6 @@ tuvieron
 tuvimos
 tuvo
 tuya
-tòfol
 ubres
 ultima
 ultimas

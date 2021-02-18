@@ -1,6 +1,8 @@
 import random
 from operator import itemgetter
 from largo_palabras import largo_palabras as p
+from modulos import configuracion
+MAX_USUARIOS, LONG_PALABRA_MIN, MAX_DESACIERTOS, PUNTOS_ACIERTOS, PUNTOS_DESACIERTOS, PUNTOS_ADIVINA = configuracion.configuracion()
 #config.txt
 lista_palabras = []      
 nombre_jugadores = []
@@ -19,10 +21,10 @@ repetido = 0
 def cantidad_jugadores():
     jugadores = input("Cuantos personas van a jugar: ")
     if jugadores.isnumeric():
-        if int(jugadores) <= max_usuarios:
+        if int(jugadores) <= MAX_USUARIOS:
             return solicitar_nombres(jugadores)
         else:
-            print('La cantidad maxima de jugadores es ', max_usuarios)
+            print('La cantidad maxima de jugadores es ', MAX_USUARIOS)
     else:
         print('Tenes que ingresar un numero')       
     return cantidad_jugadores()
@@ -94,7 +96,7 @@ def logitud_palabra():
     if longitud_palabra.isnumeric():
         if int(longitud_palabra) in p:
             if int(longitud_palabra) >= LONG_PALABRA_MIN:
-                with open("c:/Users/tinch/OneDrive/Documentos/Prog. Basica/PRO 1/tabla_final.txt", "r", encoding="utf-8") as palab:
+                with open("palabras.txt", "r") as palab:
                     for x in palab:
                         x = x.rstrip("\n")
                         if len(x) == int(longitud_palabra):

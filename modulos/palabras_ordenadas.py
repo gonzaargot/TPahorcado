@@ -3,7 +3,6 @@ def leer_registro(fh):
     Lee una linea de los registros dados, y si llega al final de este coloca unas ññññ
     para utilizar como error al llegar al fina
     """
-    
     linea = fh.readline()
     
     if linea:
@@ -42,7 +41,7 @@ def hacer_lista():
     
     tabla_a_fh = open("palabras_texto_1.txt","r")
     tabla_b_fh = open("palabras_texto_2.txt","r")
-    tabla_c_fh = open("palabras_texto_3.txt","r",encoding = 'utf-8')
+    tabla_c_fh = open("palabras_texto_3.txt","r")
     tabla_final_fh = open("palabras.txt","w")
     largo_palabras_fh = open("largo_palabras.txt","w")
     
