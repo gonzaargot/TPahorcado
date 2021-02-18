@@ -1,9 +1,7 @@
 import random
 from operator import itemgetter
-from largo_palabras import largo_palabras as p
+from largo_palabras import largo_palabras
 from modulos import configuracion
-MAX_USUARIOS, LONG_PALABRA_MIN, MAX_DESACIERTOS, PUNTOS_ACIERTOS, PUNTOS_DESACIERTOS, PUNTOS_ADIVINA = configuracion.configuracion()
-#config.txt
 lista_palabras = []      
 nombre_jugadores = []
 ordenados = []
@@ -17,6 +15,21 @@ letras_no_rep = ""
 letras_adivinadas = ""
 n_letras_faltantes = 0
 repetido = 0
+MAX_USUARIOS, LONG_PALABRA_MIN, MAX_DESACIERTOS, PUNTOS_ACIERTOS, PUNTOS_DESACIERTOS, PUNTOS_ADIVINA = configuracion.configuracion()
+
+def dictalista(listadict):
+    """ Funcion que toma una lista de diccionarios [{},{},...] y devuelve una lista de listas de esos diccionarios, siendo la clave del diccionario el primer valor de cada sublista.[[],[],].
+    ej.: Para: [{"clave1":[1,2,3]},{"clave2":[3,4,5]}]
+    Devuelve: [["clave1",1,2,3],["clave2",3,4,5]]"""
+    lista = []
+    i = 0
+    for jugador in listadict:
+        for nombre in jugador:
+            lista.append([nombre])
+            for datos in jugador[nombre]:
+                lista[i].append(datos)
+        i += 1
+    return lista
 
 def cantidad_jugadores():
     jugadores = input("Cuantos personas van a jugar: ")
@@ -38,12 +51,12 @@ def solicitar_nombres(jugadores):
     return orden()     
     
 def orden():
-        for i in range(len(nombre_jugadores)):
-            elegido = random.choice(nombre_jugadores)
-            nombre_jugadores.remove(elegido)
-            ordenados.append(elegido)
-        print('El orden de los jugadores es el siguente: ', ordenados)
-        return logitud_palabra()
+    for i in range(len(nombre_jugadores)):
+        elegido = random.choice(nombre_jugadores)
+        nombre_jugadores.remove(elegido)
+        ordenados.append(elegido)
+    print('El orden de los jugadores es el siguente: ', ordenados)
+    return logitud_palabra()
 
 def ordenad():
     segundo_orden = []
@@ -89,12 +102,11 @@ def ordenad():
     ganador = 0
     return logitud_palabra()
 
-
 def logitud_palabra():
     global longitud_palabra
     longitud_palabra = input("Ingresar la longitud de la palabra: ")
     if longitud_palabra.isnumeric():
-        if int(longitud_palabra) in p:
+        if int(longitud_palabra) in largo_palabras:
             if int(longitud_palabra) >= LONG_PALABRA_MIN:
                 with open("palabras.txt", "r") as palab:
                     for x in palab:
@@ -124,7 +136,7 @@ def turnos(): #
     #puntos_jugador[jugador][nombre][4] = 0
     for nombre in ordenados:
         #if puntos_jugador[jugador][nombre][1] == 2:
-        if puntos_jugador[jugador][nombre][4] < 7:              #cambiar el 7 por MAX_DESACIERTOS
+        if puntos_jugador[jugador][nombre][4] < MAX_DESACIERTOS:              #cambiar el 7 por MAX_DESACIERTOS
             print("turno de", nombre, "aciertos parciales:", puntos_jugador[jugador][nombre][5], "desaciertos parciales:", puntos_jugador[jugador][nombre][4], "puntaje parcial:", puntos_jugador[jugador][nombre][6])
             def adivinar(letra):
                 global palabra_oculta, letras_adivinadas, ganador, n_letras_faltantes, letras_no_rep, repetido
@@ -175,8 +187,8 @@ def turnos(): #
                         print("1 punto perdido \n")
                         puntos_jugador[jugador][nombre][4] += 1
                         puntos_jugador[jugador][nombre][1] += 1
-                        puntos_jugador[jugador][nombre][2] -= PUNTOS_DESACIERTOS
-                        puntos_jugador[jugador][nombre][6] -= PUNTOS_DESACIERTOS
+                        puntos_jugador[jugador][nombre][2] -= PUNTOS_ACIERTOS
+                        puntos_jugador[jugador][nombre][6] -= PUNTOS_ACIERTOS
                         repetido = 0
                     #print(n_letras_faltantes)
                 else:
@@ -227,10 +239,21 @@ def fin_de_partida():
         
     
     
-    
+
 
 
 def resultados():
     #ya finaliado el juego se crea el archivo PARTIDA.CSV
-    pass
+    listapuntos = dictalista(puntos_jugador) #Convierte la lista de diccionarios [{"a":[0,0,0..]},{"b":[0,0...]},....] en lista [["a",0,0,...],["b",0,0,....],....]
+    listapuntos.sort(key = lambda jugador: jugador[2]) #La ordena por puntaje
+    archivo = open("partida.csv","w") #Creacion del archivo partida.csv
+    #Comienzo de escritura de partida.csv
+    archivo.writelines("Nombre del jugador, Total de aciertos, Total de desaciertos, Puntaje total, Palabras\n")
+    for jugador in listapuntos:
+        archivo.writelines(jugador[0]+", "+str(jugador[1])+", "+str(jugador[2])+", "+str(jugador[3])+", ")
+        for palabras in jugador[4]:
+            archivo.writelines(palabras+" ")
+        archivo.writelines("\n")
+    archivo.close()
 
+cantidad_jugadores()
