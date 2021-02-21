@@ -18,7 +18,8 @@ repetido = 0
 MAX_USUARIOS, LONG_PALABRA_MIN, MAX_DESACIERTOS, PUNTOS_ACIERTOS, PUNTOS_DESACIERTOS, PUNTOS_ADIVINA = configuracion.configuracion()
 
 def dictalista(listadict):
-    """ Funcion que toma una lista de diccionarios [{},{},...] y devuelve una lista de listas de esos diccionarios, siendo la clave del diccionario el primer valor de cada sublista.[[],[],].
+    """ Gonzalo Argot. Funcion que toma una lista de diccionarios [{},{},...] y devuelve una lista de listas de esos diccionarios,
+    siendo la clave del diccionario el primer valor de cada sublista.[[],[],].
     ej.: Para: [{"clave1":[1,2,3]},{"clave2":[3,4,5]}]
     Devuelve: [["clave1",1,2,3],["clave2",3,4,5]]"""
     lista = []
@@ -32,6 +33,7 @@ def dictalista(listadict):
     return lista
 
 def cantidad_jugadores():
+    #Martin Simajowich. Funcion que solicita cuantas personas van a jugar
     jugadores = input("Cuantos personas van a jugar: ")
     if jugadores.isnumeric():
         if int(jugadores) <= MAX_USUARIOS:
@@ -43,6 +45,7 @@ def cantidad_jugadores():
     return cantidad_jugadores()
 
 def solicitar_nombres(jugadores):
+    #Martin Simajowich. Funcion que pide el nombre a los jugadores
     cantidad = 0
     while cantidad != int(jugadores):
         nom = input('Nombre del jugador: ')
@@ -51,6 +54,7 @@ def solicitar_nombres(jugadores):
     return orden()     
     
 def orden():
+    #Martin Simajowich. Funcion que da el primer orden completamente aleatorio
     for i in range(len(nombre_jugadores)):
         elegido = random.choice(nombre_jugadores)
         nombre_jugadores.remove(elegido)
@@ -59,6 +63,7 @@ def orden():
     return logitud_palabra()
 
 def ordenad():
+    #Martin Simajowich. Funcion que vuelve a dar de el orden de jugadores para una nueva partida como parametro los puntos 
     segundo_orden = []
     segundo_orden.clear()
     temporal = {}
@@ -103,6 +108,7 @@ def ordenad():
     return logitud_palabra()
 
 def logitud_palabra():
+    #Martin Simajowich. Funcion que le pide a los jugares una longitud de caracteres para la palabra que van a adivinar
     global longitud_palabra
     longitud_palabra = input("Ingresar la longitud de la palabra: ")
     if longitud_palabra.isnumeric():
@@ -118,6 +124,9 @@ def logitud_palabra():
                 palabra_azar = random.choice(lista_palabras)
                 palabra_oculta = len(palabra_azar) * "_ "
                 print(palabra_oculta)
+            else:
+                print('Tenes que ingresar una palabra que tenga mas de ', LONG_PALABRA_MIN , ' caracteres')
+                logitud_palabra()
         else:
             logitud_palabra()
     else:
@@ -125,27 +134,24 @@ def logitud_palabra():
         logitud_palabra()
     return turnos()
 
-def turnos(): #
+def turnos():
+    #Marco Tosi. Funcion que da los turnos a los jugadores y les asigna los valores a cada jugador
     jugador = 0
     if puntos_jugador == []:
-        for nombre in ordenados:# [ {"eee":[]}   , {"ss":[] }   ,    {"q":[]}      ]
+        for nombre in ordenados:
             puntos_jugador.append({nombre:[0,0,0,[],0,0,0,0]})
-            #LISTA CON DICCIONARIOS PARA CADA JUGADOR. 
-            #{JUGADOR: [ACIERTOS=0, DESACIERTOS=1, PUNTAJE=2, PALABRAS=3, DESACIERTOS PAL=4, ACIERTOS PAL=5, PUNTOS PAL=6, POSICION = 7]}
     perdedor = 0
-    #puntos_jugador[jugador][nombre][4] = 0
     for nombre in ordenados:
-        #if puntos_jugador[jugador][nombre][1] == 2:
-        if puntos_jugador[jugador][nombre][4] < MAX_DESACIERTOS:              #cambiar el 7 por MAX_DESACIERTOS
+        if puntos_jugador[jugador][nombre][4] < MAX_DESACIERTOS:             
             print("turno de", nombre, "aciertos parciales:", puntos_jugador[jugador][nombre][5], "desaciertos parciales:", puntos_jugador[jugador][nombre][4], "puntaje parcial:", puntos_jugador[jugador][nombre][6])
             def adivinar(letra):
+                #Marco Tosi. Funcion que sirve corroborar si la letra que dan este dentro de la palabra a adivinar
                 global palabra_oculta, letras_adivinadas, ganador, n_letras_faltantes, letras_no_rep, repetido
                 repetido = 0
                 for x in palabra_azar:
                     if x not in letras_no_rep:
                         letras_no_rep += x
                 if letra.isalpha():
-                    #elif letra in palabra_azar:
                     if len(letra) == 1 and letra != palabra_azar:
                         if letra not in letras_adivinadas:
                             letras_adivinadas += letra
@@ -156,8 +162,7 @@ def turnos(): #
                                 print(x.upper(), end=" ")
                             else:
                                 print("_", end=" ")
-                        print(" ")#, len(letras_no_rep), letras_no_rep, letras_adivinadas, repetido)
-                    
+                        print(" ")                    
                     if (len(letra) == 1) and (letra in palabra_azar) and (repetido == 0):
                         print("2 puntos ganados \n")
                         n_letras_faltantes += 1
@@ -169,11 +174,9 @@ def turnos(): #
                         puntos_jugador[jugador][nombre][2] += PUNTOS_ADIVINA
                         puntos_jugador[jugador][nombre][6] += PUNTOS_ADIVINA
                         puntos_jugador[jugador][nombre][7] += 1
-                        #puntos_jugador[jugador][nombre][0] += 1
-                        #puntos_jugador[jugador][nombre][5] += 1
                         print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados")
                         puntos_jugador[jugador][nombre][3].append(palabra_azar)
-                        ganador += 1      #continuar con la siguiente funcion. preguntar si se desea seguir jugando, de ser asi, ir a la funcion ORDEN
+                        ganador += 1      
                     elif letra == palabra_azar:
                         puntos_jugador[jugador][nombre][2] += PUNTOS_ADIVINA
                         puntos_jugador[jugador][nombre][6] += PUNTOS_ADIVINA
@@ -182,7 +185,7 @@ def turnos(): #
                         puntos_jugador[jugador][nombre][7] += 1
                         print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados")
                         puntos_jugador[jugador][nombre][3].append(palabra_azar)
-                        ganador += 1      #continuar con la siguiente funcion. preguntar si se desea seguir jugando, de ser asi, ir a la funcion ORDEN
+                        ganador += 1      
                     elif (len(letra) != 1) or (letra not in palabra_azar) or (repetido != 0):
                         print("1 punto perdido \n")
                         puntos_jugador[jugador][nombre][4] += 1
@@ -190,25 +193,21 @@ def turnos(): #
                         puntos_jugador[jugador][nombre][2] -= PUNTOS_ACIERTOS
                         puntos_jugador[jugador][nombre][6] -= PUNTOS_ACIERTOS
                         repetido = 0
-                    #print(n_letras_faltantes)
                 else:
                     adivinar(input("Ingresar una letra o palabra completa: "))
             adivinar(input("Ingresar una letra o palabra completa: "))
         else:
-            print("perdiste el turno salamin.", nombre, "no juega mas por tener los 7 desaciertos. alejate del teclado \n",)
+            print("Te quedaste sin intentos para acertar", nombre, "no juega mas por tener los 7 desaciertos.\n",)
             perdedor += 1
-        #print(puntos_jugador)
-        #print("perdedor:", perdedor, " .      jugador: ", jugador)
-        #if ganador == 1:
-        #    return fin_de_partida()
         jugador += 1
         if perdedor == len(ordenados) or ganador == 1:
             if perdedor == len(ordenados):
-                print("perdieron todos. gano el grupo UwU. la palabra era: ", palabra_azar.upper())
+                print("Perdieron todos. gano el grupo UwU. la palabra era: ", palabra_azar.upper())
             return fin_de_partida()
     turnos()
 
 def fin_de_partida():
+    #Marco Tosi. Funcion que finaliza la ronda, mostrando los resultados parciales y pregunta si quieren seguir jugando
     jugador = 0
     global ganador, palabra_oculta, letras_adivinadas, partidas, longitud_palabra, palabra_azar, letras_no_rep, n_letras_faltantes, repetido, lista_palabras
     for nombre in ordenados:
@@ -235,15 +234,9 @@ def fin_de_partida():
         resultados()
     else:
         ordenad()
-    
-        
-    
-    
-
-
 
 def resultados():
-    #ya finaliado el juego se crea el archivo PARTIDA.CSV
+    #Gonzalo Argot. Funcion que ya finaliado el juego se crea el archivo PARTIDA.CSV
     listapuntos = dictalista(puntos_jugador) #Convierte la lista de diccionarios [{"a":[0,0,0..]},{"b":[0,0...]},....] en lista [["a",0,0,...],["b",0,0,....],....]
     listapuntos.sort(key = lambda jugador: jugador[2]) #La ordena por puntaje
     archivo = open("partida.csv","w") #Creacion del archivo partida.csv

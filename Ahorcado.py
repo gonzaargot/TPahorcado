@@ -2,15 +2,15 @@ from modulos import generador_archivos_ordenados as listar_cuentos
 from modulos import palabras_ordenadas, juego
 
 
-def main():
+def main():#Matias Bangueses
     if not revisar_archivos():
         listar_cuentos.generar_archivos()
     palabras_ordenadas.hacer_lista()
-    
     juego.cantidad_jugadores()
     
     
-def revisar_archivos():
+def revisar_archivos():#Matias Bangueses
+    #revisa si las 3 listas hechas a partir de los cuentos están presentes y devuelve un booleano
     cuento = 1
     existe = True
     while cuento < 4 and existe == True:

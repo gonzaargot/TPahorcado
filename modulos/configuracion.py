@@ -23,12 +23,7 @@ def configuracion():
                     elif i == 5: puntos_adivina = int(linea.strip(lista[5]))
             linea = archivo.readline()
         archivo.close()
-    else:print("\nNo se ha encontrado el archivo configuracion.txt. Utilizando valores de configuracion por defecto...\n\n")#Mensaje de error si no se pueden cargar el archivo configuracion.txt. Se usan los valores por defecto.
-    print("*** Valores de configuracion ***\n")#Muestra en pantalla de la configuracion final.
-    print("MAX_USUARIOS =",max_usuarios)
-    print("LONG_PALABRA_MIN =",long_palabra_min)
-    print("MAX_DESACIERTOS =",max_desaciertos)
-    print("PUNTOS_ACIERTOS =",puntos_aciertos)
-    print("PUNTOS_DESACIERTOS =",puntos_desaciertos)
-    print("PUNTOS_ADIVINA =",puntos_adivina)
+    else:
+        print("\nNo se ha encontrado el archivo configuracion.txt. Utilizando valores de configuracion por defecto...\n\n")#Mensaje de error si no se pueden cargar el archivo configuracion.txt. Se usan los valores por defecto.
+ 
     return max_usuarios, long_palabra_min,max_desaciertos, puntos_aciertos, puntos_desaciertos, puntos_adivina
