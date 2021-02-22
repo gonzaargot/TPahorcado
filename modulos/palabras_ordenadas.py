@@ -109,4 +109,5 @@ def hacer_lista():
     tabla_c_fh.close()
     tabla_final_fh.close()
     print(largo_palabras)
+    palabras_totales(largo_palabras)
     return
