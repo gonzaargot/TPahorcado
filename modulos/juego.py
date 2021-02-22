@@ -129,6 +129,7 @@ def logitud_palabra():
                 logitud_palabra()
         else:
             logitud_palabra()
+            print("No se encontro en la base de datos una palabra de esa longitud.")
     else:
         print('Tenes que ingresar un numero')
         logitud_palabra()
@@ -249,4 +250,3 @@ def resultados():
         archivo.writelines("\n")
     archivo.close()
 
-cantidad_jugadores()

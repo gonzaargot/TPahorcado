@@ -25,5 +25,11 @@ def configuracion():
         archivo.close()
     else:
         print("\nNo se ha encontrado el archivo configuracion.txt. Utilizando valores de configuracion por defecto...\n\n")#Mensaje de error si no se pueden cargar el archivo configuracion.txt. Se usan los valores por defecto.
- 
+    print("\n*** Valores de configuracion ***\n")#Muestra en pantalla de la configuracion final.
+    print("Cantidad maxima de usuarios:",max_usuarios)
+    print("Longitud minima de palabra:",long_palabra_min)
+    print("Cantidad maxima de desaciertos:",max_desaciertos)
+    print("Puntos por acertar una letra:",puntos_aciertos)
+    print("Puntos que se restan por desacierto:",puntos_desaciertos)
+    print("Puntos por adivinar la palabra:",puntos_adivina)
     return max_usuarios, long_palabra_min,max_desaciertos, puntos_aciertos, puntos_desaciertos, puntos_adivina
