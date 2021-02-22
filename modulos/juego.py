@@ -53,7 +53,7 @@ def solicitar_nombres(jugadores):
         for x in nom:
             if not x.isalpha() and not x == " ":
                 nombre_valido = False
-        if nombre_valido:
+        if nombre_valido and nom not in nombre_jugadores:
             nombre_jugadores.append(nom)
             cantidad += 1
     return orden()     
