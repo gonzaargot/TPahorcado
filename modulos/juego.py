@@ -49,8 +49,13 @@ def solicitar_nombres(jugadores):
     cantidad = 0
     while cantidad != int(jugadores):
         nom = input('Nombre del jugador: ')
-        nombre_jugadores.append(nom)
-        cantidad += 1
+        nombre_valido = True
+        for x in nom:
+            if not x.isalpha() and not x == " ":
+                nombre_valido = False
+        if nombre_valido:
+            nombre_jugadores.append(nom)
+            cantidad += 1
     return orden()     
     
 def orden():
@@ -174,7 +179,7 @@ def turnos():
                         puntos_jugador[jugador][nombre][2] += PUNTOS_ADIVINA - PUNTOS_ACIERTOS
                         puntos_jugador[jugador][nombre][6] += PUNTOS_ADIVINA - PUNTOS_ACIERTOS
                         puntos_jugador[jugador][nombre][7] += 1
-                        print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados")
+                        print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados\n")
                         puntos_jugador[jugador][nombre][3].append(palabra_azar)
                         ganador += 1      
                     elif letra == palabra_azar:
@@ -183,7 +188,7 @@ def turnos():
                         puntos_jugador[jugador][nombre][0] += 1
                         puntos_jugador[jugador][nombre][5] += 1
                         puntos_jugador[jugador][nombre][7] += 1
-                        print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados")
+                        print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados\n")
                         puntos_jugador[jugador][nombre][3].append(palabra_azar)
                         ganador += 1      
                     elif (len(letra) != 1) or (letra not in palabra_azar) or (repetido != 0):
@@ -202,7 +207,7 @@ def turnos():
         jugador += 1
         if perdedor == len(ordenados) or ganador == 1:
             if perdedor == len(ordenados):
-                print("Perdieron todos. gano el grupo UwU. la palabra era: ", palabra_azar.upper())
+                print("Perdieron todos. Ganó el grupo UwU. La palabra era: ", palabra_azar.upper())
             return fin_de_partida()
     turnos()
 
@@ -211,7 +216,7 @@ def fin_de_partida():
     jugador = 0
     global ganador, palabra_oculta, letras_adivinadas, partidas, longitud_palabra, palabra_azar, letras_no_rep, n_letras_faltantes, repetido, lista_palabras
     for nombre in ordenados:
-        print("puntos de:", nombre, "puntaje total:", puntos_jugador[jugador][nombre][2], "aciertos totales:", puntos_jugador[jugador][nombre][0], "desaciertos totales:", puntos_jugador[jugador][nombre][1], "palabras: ", puntos_jugador[jugador][nombre][3])
+        print("Puntos de:", nombre, "| Puntaje total:", puntos_jugador[jugador][nombre][2], "| Aciertos totales:", puntos_jugador[jugador][nombre][0], "| Desaciertos totales:", puntos_jugador[jugador][nombre][1], "| Palabras: ", puntos_jugador[jugador][nombre][3])
         puntos_jugador[jugador][nombre][4] = 0
         puntos_jugador[jugador][nombre][5] = 0
         puntos_jugador[jugador][nombre][6] = 0
@@ -229,7 +234,7 @@ def fin_de_partida():
     repetido = 0
     longitud_palabra = 0
     palabra_azar = ""
-    continuar_juego = input("¿Desean seguir jugando? SI: cualquier boton. NO: n       ")
+    continuar_juego = input("¿Desean seguir jugando? SI: cualquier boton | NO: n\n")
     if continuar_juego == "n":
         return resultados()
     else:
