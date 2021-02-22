@@ -172,8 +172,8 @@ def turnos():
                         puntos_jugador[jugador][nombre][0] += 1
                         puntos_jugador[jugador][nombre][5] += 1
                     if len(letras_no_rep) == n_letras_faltantes:
-                        puntos_jugador[jugador][nombre][2] += PUNTOS_ADIVINA
-                        puntos_jugador[jugador][nombre][6] += PUNTOS_ADIVINA
+                        puntos_jugador[jugador][nombre][2] += PUNTOS_ADIVINA - PUNTOS_ACIERTOS
+                        puntos_jugador[jugador][nombre][6] += PUNTOS_ADIVINA - PUNTOS_ACIERTOS
                         puntos_jugador[jugador][nombre][7] += 1
                         print(palabra_azar.upper(), "  ¡¡¡Adivinaste la palabra!!! 30 puntos por adivinar ganados")
                         puntos_jugador[jugador][nombre][3].append(palabra_azar)
@@ -191,8 +191,8 @@ def turnos():
                         print("1 punto perdido \n")
                         puntos_jugador[jugador][nombre][4] += 1
                         puntos_jugador[jugador][nombre][1] += 1
-                        puntos_jugador[jugador][nombre][2] -= PUNTOS_ACIERTOS
-                        puntos_jugador[jugador][nombre][6] -= PUNTOS_ACIERTOS
+                        puntos_jugador[jugador][nombre][2] -= PUNTOS_DESACIERTOS
+                        puntos_jugador[jugador][nombre][6] -= PUNTOS_DESACIERTOS
                         repetido = 0
                 else:
                     adivinar(input("Ingresar una letra o palabra completa: "))
