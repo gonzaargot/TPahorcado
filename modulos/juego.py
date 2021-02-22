@@ -36,7 +36,7 @@ def cantidad_jugadores():
     #Martin Simajowich. Funcion que solicita cuantas personas van a jugar
     jugadores = input("Cuantos personas van a jugar: ")
     if jugadores.isnumeric():
-        if int(jugadores) <= MAX_USUARIOS:
+        if int(jugadores) <= MAX_USUARIOS and int(jugadores) > 0:
             return solicitar_nombres(jugadores)
         else:
             print('La cantidad maxima de jugadores es ', MAX_USUARIOS)
