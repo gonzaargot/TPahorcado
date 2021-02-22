@@ -120,7 +120,6 @@ def logitud_palabra():
                         if len(x) == int(longitud_palabra):
                             lista_palabras.append(x)
                 global palabra_azar, palabra_oculta
-                #print(lista_palabras ,len(lista_palabras))
                 palabra_azar = random.choice(lista_palabras)
                 palabra_oculta = len(palabra_azar) * "_ "
                 print(palabra_oculta)
@@ -232,7 +231,7 @@ def fin_de_partida():
     palabra_azar = ""
     continuar_juego = input("¿Desean seguir jugando? SI: cualquier boton. NO: n       ")
     if continuar_juego == "n":
-        resultados()
+        return resultados()
     else:
         ordenad()
 

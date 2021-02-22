@@ -1,7 +1,8 @@
 def leer_registro(fh):
     """
+    José Esquivel
     Lee una linea de los registros dados, y si llega al final de este coloca unas ññññ
-    para utilizar como error al llegar al fina
+    para utilizar como error al llegar al final de cada registro
     """
     linea = fh.readline()
     
@@ -9,12 +10,13 @@ def leer_registro(fh):
         registro = linea.rstrip('\n').split(',')
     else:
         registro = ["ññññ"]
-        
+    
     return registro
 
 
 def longitud_palabras(a,largo_palabras):
     """
+    José Esquivel
     De cada palabra que llega en la función de hacer_lista()
     y es aceptada para la tabla final se mide su longitud final
     y lo pone en el dicionario con la longitud de la palabras y cuantas tienen esa misma longitud
@@ -31,9 +33,21 @@ def longitud_palabras(a,largo_palabras):
         largo_palabras[long_a] = 1
 
     return largo_palabras
- 
+
+def palabras_totales(largo_palabras):
+    """
+    Calcula la cantidad de palabras totales de la lista final.
+    José Esquivel
+    """
+    total = 0  
+    for x in largo_palabras:
+        total += largo_palabras[x]
+    print("La cantidad de palabras totales en la lista final es",total)
+    return
+
 def hacer_lista():
     """
+    José Esquivel
     Por cada linea leida en el registro, se calcula cual es la menor
     y se coloca en el registro final una por una hasta llegar al final,
     las palabras repetidas no se vuelven a poner
@@ -96,18 +110,3 @@ def hacer_lista():
     tabla_final_fh.close()
     print(largo_palabras)
     return
-
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    
-    
