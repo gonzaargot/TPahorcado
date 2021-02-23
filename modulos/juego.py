@@ -42,7 +42,7 @@ def cantidad_jugadores():
             print('La cantidad maxima de jugadores es ', MAX_USUARIOS)
     else:
         print('Tenes que ingresar un numero')       
-    return cantidad_jugadores()
+    cantidad_jugadores()
 
 def solicitar_nombres(jugadores):
     #Martin Simajowich. Funcion que pide el nombre a los jugadores
@@ -130,13 +130,13 @@ def logitud_palabra():
                 print(palabra_oculta)
             else:
                 print('Tenes que ingresar una palabra que tenga mas de ', LONG_PALABRA_MIN , ' caracteres')
-                logitud_palabra()
+                return logitud_palabra()   
         else:
-            logitud_palabra()
             print("No se encontro en la base de datos una palabra de esa longitud.")
+            return logitud_palabra()
     else:
         print('Tenes que ingresar un numero')
-        logitud_palabra()
+        return logitud_palabra()
     return turnos()
 
 def turnos():
