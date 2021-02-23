@@ -59,7 +59,7 @@ def hacer_lista():
     tabla_b_fh = open("palabras_texto_2.txt","r")
     tabla_c_fh = open("palabras_texto_3.txt","r")
     tabla_final_fh = open("palabras.txt","w")
-    largo_palabras_fh = open("largo_palabras.txt","w")
+    largo_palabras_fh = open("largo_palabras.py","w")
     
     a = leer_registro(tabla_a_fh)
     b = leer_registro(tabla_b_fh)
@@ -103,7 +103,7 @@ def hacer_lista():
             
             c = leer_registro(tabla_c_fh)
     
-    largo_palabras_fh.write('{}\n'.format(largo_palabras))
+    largo_palabras_fh.write('largo_palabras = {}\n'.format(largo_palabras))
     
     largo_palabras_fh.close()
     tabla_a_fh.close()

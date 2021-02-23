@@ -129,15 +129,15 @@ def logitud_palabra():
                 palabra_oculta = len(palabra_azar) * "_ "
                 print(palabra_oculta)
             else:
-                print('Tenes que ingresar una palabra que tenga mas de ', LONG_PALABRA_MIN , ' caracteres')
-                return logitud_palabra()   
+                print('Tenes que ingresar una palabra que tenga mas de ', LONG_PALABRA_MIN , ' caracteres')    
         else:
             print("No se encontro en la base de datos una palabra de esa longitud.")
-            return logitud_palabra()
     else:
         print('Tenes que ingresar un numero')
+    if palabra_azar != '':
+        return turnos()
+    else:
         return logitud_palabra()
-    return turnos()
 
 def turnos():
     #Marco Tosi. Funcion que da los turnos a los jugadores y les asigna los valores a cada jugador

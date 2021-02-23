@@ -1,11 +1,12 @@
 from modulos import generador_archivos_ordenados as listar_cuentos
-from modulos import palabras_ordenadas, juego
+from modulos import palabras_ordenadas
 
 
 def main():#Matias Bangueses
     if not revisar_archivos():
         listar_cuentos.generar_archivos()
     palabras_ordenadas.hacer_lista()
+    from modulos import juego
     juego.cantidad_jugadores()
     
     
