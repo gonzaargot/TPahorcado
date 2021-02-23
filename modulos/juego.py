@@ -148,7 +148,7 @@ def turnos():
     perdedor = 0
     for nombre in ordenados:
         if puntos_jugador[jugador][nombre][4] < MAX_DESACIERTOS:             
-            print("turno de", nombre, "aciertos parciales:", puntos_jugador[jugador][nombre][5], "desaciertos parciales:", puntos_jugador[jugador][nombre][4], "puntaje parcial:", puntos_jugador[jugador][nombre][6])
+            print("Turno de", nombre, "| Aciertos parciales:", puntos_jugador[jugador][nombre][5], "| Desaciertos parciales:", puntos_jugador[jugador][nombre][4], "| Puntaje parcial:", puntos_jugador[jugador][nombre][6])
             def adivinar(letra):
                 #Marco Tosi. Funcion que sirve corroborar si la letra que dan este dentro de la palabra a adivinar
                 global palabra_oculta, letras_adivinadas, ganador, n_letras_faltantes, letras_no_rep, repetido
