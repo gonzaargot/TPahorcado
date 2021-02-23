@@ -23,6 +23,7 @@ def longitud_palabras(a,largo_palabras):
     """
     
     long_a = len(a[0])
+    
         
     try:
             
@@ -39,6 +40,7 @@ def palabras_totales(largo_palabras):
     Calcula la cantidad de palabras totales de la lista final.
     José Esquivel
     """
+    
     total = 0  
     for x in largo_palabras:
         total += largo_palabras[x]
@@ -108,6 +110,8 @@ def hacer_lista():
     tabla_b_fh.close()
     tabla_c_fh.close()
     tabla_final_fh.close()
-    print(largo_palabras)
+    x = dict(sorted(largo_palabras.items()))
+    for a in x:
+        print("La cantidad de palabras con", a, "letras es: ", x[a])
     palabras_totales(largo_palabras)
     return
